@@ -1,0 +1,24 @@
+{
+  "name": "MurkyExoAPI",
+  "version": "1.0.1",
+  "description": "shitty Exo API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gareth Fletcher <gareth@onenet.co.nz>",
+  "license": "ISC",
+  "dependencies": {
+    "app-root-path": "^2.1.0",
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.3",
+    "express": "^4.16.3",
+    "express-basic-auth": "^1.1.5",
+    "joi": "^13.7.0",
+    "jsonwebtoken": "^8.3.0",
+    "morgan": "^1.9.1",
+    "mssql": "^4.2.1",
+    "winston": "^3.1.0",
+    "xml": "^1.0.1"
+  }
+}
