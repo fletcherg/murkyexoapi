@@ -20,7 +20,7 @@ var routes = function () {
              }
              var offset = page * limit;
              // SQL QUERY MUAHAHAHAHAHAHHHAH
-             var sqlQuery = `SELECT h.accno as AccountNumber, h.is_active as IsActive, h.X_PROSPECTSEQNO as NonAccountNumber,
+             var sqlQuery = `SELECT l.SEQNO as SubscriptionID, h.accno as AccountNumber, h.is_active as IsActive, h.X_PROSPECTSEQNO as NonAccountNumber,
                 h.X_USERACCOUNTVIEW as X_UserAccountView, l.STOCK_CODE as StockCode, l.DESCRIPTION as Description,
                 l.Qty, l.UnitPrice, l.Total
                 FROM [dbo].[SUBS_LINE] l
