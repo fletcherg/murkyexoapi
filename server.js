@@ -39,16 +39,22 @@ app.use(function(req, res, next) {
 var fatController = require('./Controller/FatController')();
 //var productController = require('./Controller/ProductController')();
 var SubscriptionController = require('./Controller/SubscriptionController')();
+var InvoiceController = require('./Controller/InvoiceController')();
 //var DebtorController = require('./Controller/DebtorController')();
 //var NonAccountController = require('./Controller/NonAccountController')();
 var StatusController = require('./Controller/StatusController')();
+var ProductGroupsController = require('./Controller/ProductGroupsController')();
+var ProductGroup2sController = require('./Controller/ProductGroup2sController')();
 
 app.use("/fat", fatController);
 //app.use("/products", productController);
 app.use("/subscriptions", SubscriptionController);
+app.use("/invoices", InvoiceController);
 //app.use("/debtors", DebtorController);
 //app.use("/NonAccounts", NonAccountController);
 app.use("/status", StatusController);
+app.use("/productgroups", ProductGroupsController);
+app.use("/productgroup2s", ProductGroupsController);
 
 app.use(function(req, res){
     res.send({ 
