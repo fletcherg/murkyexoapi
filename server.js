@@ -45,6 +45,7 @@ var InvoiceController = require('./Controller/InvoiceController')();
 var StatusController = require('./Controller/StatusController')();
 var ProductGroupsController = require('./Controller/ProductGroupsController')();
 var ProductGroup2sController = require('./Controller/ProductGroup2sController')();
+var ClientController = require('./Controller/ClientController')();
 
 app.use("/fat", fatController);
 //app.use("/products", productController);
@@ -55,6 +56,7 @@ app.use("/invoices", InvoiceController);
 app.use("/status", StatusController);
 app.use("/productgroups", ProductGroupsController);
 app.use("/productgroup2s", ProductGroupsController);
+app.use("/clients", ClientController);
 
 app.use(function(req, res){
     res.send({ 
