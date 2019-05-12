@@ -66,9 +66,11 @@ var routes = function () {
                   ,COALESCE(d.[X_LEAVINGDESCRIPTION],p.[X_LEAVINGDESCRIPTION]) as X_LEAVINGDESCRIPTION
                   ,COALESCE(d.[X_RELATIONSHIPTYPE],p.[X_RELATIONSHIPTYPE]) as X_RELATIONSHIPTYPE
                   ,COALESCE(d.[X_BUSINESSPARTNER],p.[X_BUSINESSPARTNER]) as X_BUSINESSPARTNER
+                  ,p.name as NonAccount_Name
             FROM [dbo].[PROSPECTS] p
             FULL OUTER JOIN [dbo].[DR_ACCS] d
             ON p.DRACCNO = d.ACCNO
+            WHERE p.SEQNO IS NOT NULL
             ORDER BY SEQNO`;
             if (limit != 0) {
                 sqlQuery += " OFFSET " + offset + " ROWS FETCH NEXT " + limit + " ROWS ONLY";

@@ -4,7 +4,7 @@ var sql = require("mssql");
 var conn = require("../connection/connect")();
 
 var routes = function () {
-    // GET Subscriptions
+    // GET Invoices
     router.route('/')
         .get(function (req, res) {
              // Pagination
@@ -18,14 +18,18 @@ var routes = function () {
              } else if (limit < 0) {
                  limit = 10;
              }
+             var months = parseInt(req.query.months, 10);
+               if (isNaN(months)) {
+                months = 12;
+             } else if (months <= 0) {
+                months = 12;
+             }
              var offset = page * limit;
-             // SQL QUERY MUAHAHAHAHAHAHHHAH
-             var sqlQuery = `SELECT l.SEQNO as SubscriptionID, h.accno as AccountNumber, h.is_active as IsActive, h.X_PROSPECTSEQNO as NonAccountNumber,
-                h.X_USERACCOUNTVIEW as X_UserAccountView, l.STOCK_CODE as StockCode, l.DESCRIPTION as Description, l.X_LONGDESCRIPTION as DescriptionDetail,
-                l.Qty, l.UnitPrice, l.Total - l.TAXAMT as Total
-                FROM [dbo].[SUBS_LINE] l
-                JOIN [dbo].[SUBS_HDR] h ON l.HDR_SEQNO = h.SEQNO
-                ORDER BY ACCNO`;
+             // SQL QUERY This will only return the last years worth of data
+             var sqlQuery = `SELECT *
+         FROM [dbo].[DR_INVLINES]`;
+         sqlQuery += "ORDER BY INVOICELINEID DESC";
+         
             if (limit != 0) {
                    sqlQuery += " OFFSET " + offset + " ROWS FETCH NEXT " + limit + " ROWS ONLY";
             }
